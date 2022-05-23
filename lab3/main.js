@@ -31,34 +31,25 @@ const options={
 	},
 	apis:['./main.js'],
 };
-const swaggerSpec = SwaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options);
 
 /**
  * @swagger
  * /login:
- * 	post:
- * 		desription: User Login
- * 		requestBody:
- * 			required: true
- * 			content:
- * 				application/json:
- * 					schema:
- * 						type: object
- * 						properties:
- * 							username:
- * 								type: string
- * 							password:
- * 								type: string
- * 
-
-
-
-
-
-
-
-
-
+ *  post:
+ *   desription: User Login
+ *   requestBody:
+ *    required: true
+ *    content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         username:
+ *            type: string
+ *         password:
+ *            type: string
+ */
 
 app.use('/app-docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
