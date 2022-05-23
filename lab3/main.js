@@ -19,6 +19,49 @@ const app = express()
 //const port = 3000
 const port = process.env.PORT||3000
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+const options={
+	definition:{
+		openapi:'3.0.0',
+		info:{ 
+			title:'MyVMS API',
+			version:'1.0.0',
+		},
+	},
+	apis:['./main.js'],
+};
+const swaggerSpec = SwaggerJsdoc(options);
+
+/**
+ * @swagger
+ * /login:
+ * 	post:
+ * 		desription: User Login
+ * 		requestBody:
+ * 			required: true
+ * 			content:
+ * 				application/json:
+ * 					schema:
+ * 						type: object
+ * 						properties:
+ * 							username:
+ * 								type: string
+ * 							password:
+ * 								type: string
+ * 
+
+
+
+
+
+
+
+
+
+
+app.use('/app-docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
